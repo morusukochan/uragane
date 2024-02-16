@@ -28,27 +28,27 @@ https://83.gigafile.nu/0526-gf5a1e40d60e2461c60f80f8e97943073
 https://github.com/morusukochan/uragane/blob/main/searchText.exe
 ![説明2](https://github.com/morusukochan/uragane/assets/128382257/ac7f02c1-0072-4675-81c4-93ffbc3095c5)
 
-２．初回起動時のデータベース読み込み（win11の場合）
-ダウンロードしたsearchText.exeファイルをfileフォルダと同じ階層に置く
+２．初回起動時のデータベース読み込み（win11の場合）  
+ダウンロードしたsearchText.exeファイルをfileフォルダと同じ階層に置く  
 ![image](https://github.com/morusukochan/uragane/assets/128382257/4b7e3562-daea-4b3d-851f-9ec4dbffa59d)
 
 
-searchText.exeをダブルクリックして起動　（Windowsセキュリティが出るので　詳細をおして→実行ボタンをおす）
+searchText.exeをダブルクリックして起動　（Windowsセキュリティが出るので　詳細をおして→実行ボタンをおす）  
 ![実行1](https://github.com/morusukochan/uragane/assets/128382257/ff433f44-4396-42ad-bea1-3867fae46e10)
-![実行](https://github.com/morusukochan/uragane/assets/128382257/1df92cab-449c-4115-8f4d-30801c58b1ad)
+![実行](https://github.com/morusukochan/uragane/assets/128382257/1df92cab-449c-4115-8f4d-30801c58b1ad)  
 
-初回起動時のみデータベース更新をする
-↓yを入力してエンター（2回目以降の起動時はデータベース更新は不要ですnを押してスキップしてください）
-![image](https://github.com/morusukochan/uragane/assets/128382257/6c79e6c4-24e4-46f0-904b-673089a034af)
+初回起動時のみデータベース更新をする  
+↓yを入力してエンター（2回目以降の起動時はデータベース更新は不要ですnを押してスキップしてください）  
+![image](https://github.com/morusukochan/uragane/assets/128382257/6c79e6c4-24e4-46f0-904b-673089a034af)  
 （ここで10分～30分ぐらいかかる）
 
 ３．一括テキスト検索
-任意の検索キーを入力
-![image](https://github.com/morusukochan/uragane/assets/128382257/22c26d4c-df6e-4ed8-826c-5ac0b7fe4c31)
+任意の検索キーを入力  
+![image](https://github.com/morusukochan/uragane/assets/128382257/22c26d4c-df6e-4ed8-826c-5ac0b7fe4c31)  
 
-マッチしたら返す（最大10に設定しています）　もっと増やしてほしいとか使い勝手の提案あればください
-画像を表示するかどうかynをこたえる（半角のyだから気を付けて）
-yでエンターを押すと検索にマッチした画像ファイルが表示される
+マッチしたら返す（最大10に設定しています）　もっと増やしてほしいとか使い勝手の提案あればください  
+画像を表示するかどうかynをこたえる（半角のyだから気を付けて）  
+yでエンターを押すと検索にマッチした画像ファイルが表示される  
 
 以下ループ。おわりたければ検索キーの入力時にexitと入れるか窓を×で消す
 
