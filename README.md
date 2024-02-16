@@ -6,7 +6,7 @@
 このプロジェクトの目的は、全てのPDFデータをテキストデータ化し公開することにより、日本の政治資金の不正を多くの人が監視し、不正を告発することが可能になる環境を作り出すことです。これにより、より公正な政治活動へと変化していくことを目指しています。
 ![説明](https://github.com/morusukochan/uragane/assets/128382257/8817a6b1-86d4-44b4-8350-8a140c93659f)
 
-
+※清書するときに　スプレッドシート、PDF一括ダウンロード、テキスト検索ツール三つの関係を分かりやすく説明する
 
 ## 政治資金収支報告書及び政党交付金使途等報告書スプレッドシート
 https://docs.google.com/spreadsheets/d/1LDCPJHwAqR2aIFU27a9HF81LtlTdhSeLXwfurvXfsUQ/edit?usp=sharing
