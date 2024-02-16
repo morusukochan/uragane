@@ -1,3 +1,6 @@
+![image](https://github.com/morusukochan/uragane/assets/128382257/6f0e6487-98ae-4e3c-9888-5f9cb43ee977)
+
+
 # 政治資金収支報告書のデータ化
 
 ## プロジェクトの概要
