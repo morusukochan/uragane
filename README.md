@@ -29,11 +29,20 @@ https://83.gigafile.nu/0526-gf5a1e40d60e2461c60f80f8e97943073
 (検索スピードを重視したモードしか作っていないので部分一致などは対応できていない。今後部分一致検索等も対応した精密な検索モードも作る予定)
 
 １．ダウンロード
-https://github.com/morusukochan/uragane/blob/main/searchText.exe
+https://github.com/morusukochan/uragane/blob/main/dist  
+・searchText.exe  
+   初期のメディア向けリリース仕様 FTS5による全文検索は早いが完全一致のみであるため検索漏れがある  
+・searchTextFTS5.exe   
+   janomeを導入し日本語でも高速で部分一致検索を可能にしたデータベース更新に時間がかかる。3年分の収支報告書のデータベース化で1時間半（Corei9）  
+・searchTextLike.exe  
+   FTS5ではなくテーブルによるデータベース化とLIKE検索。部分一致検索はできるが検索にものすごく時間がかかる  
+
+ダウンロードはこのボタン  
 ![説明2](https://github.com/morusukochan/uragane/assets/128382257/ac7f02c1-0072-4675-81c4-93ffbc3095c5)
 
 ２．初回起動時のデータベース読み込み（win11の場合）  
 ダウンロードしたsearchText.exeファイルをfileフォルダと同じ階層に置く  
+まずはサンプルデータとしてfilesフォルダをgithubにアップしたのでそちらで試してみることをお勧めします。
 ![image](https://github.com/morusukochan/uragane/assets/128382257/4b7e3562-daea-4b3d-851f-9ec4dbffa59d)
 
 
@@ -47,21 +56,22 @@ searchText.exeをダブルクリックして起動　（Windowsセキュリテ�
 （ここで10分～30分ぐらいかかる）
 
 ３．一括テキスト検索
+検索結果の最大数を設定する（デフォルトは10）  
 任意の検索キーを入力  
 ![image](https://github.com/morusukochan/uragane/assets/128382257/22c26d4c-df6e-4ed8-826c-5ac0b7fe4c31)  
-
+  
 マッチしたら返す（最大10に設定しています）　もっと増やしてほしいとか使い勝手の提案あればください  
 画像を表示するかどうかynをこたえる（半角のyだから気を付けて）  
 yでエンターを押すと検索にマッチした画像ファイルが表示される  
 
-以下ループ。おわりたければ検索キーの入力時にexitと入れるか窓を×で消す
+以下ループ。おわりたければ検索キーの入力時にexitと入れるか窓を×で消す  
 
 ## このプロジェクトのライセンス
 OCRによる一括読み取りデータやテキスト検索ツール等このオープンソースプロジェクトによる成果物は全て
 MITライセンスで広く提供します
 
 ## 今後の予定(2~3週間ぐらいでやること)  
-・3年以前の過去分をデータベースに追加  
+・3年以前の過去分をデータベースに追加→公益財団法人　政治資金センター（https://openpolitics.or.jp/）さんにコンタクトをとる  
 ・政党交付金使途等報告書のPDF一括ダウンロード  
 ・政党交付金使途等報告書をGoogle Vision APIでテキスト化  
 ・政党交付金使途等報告書データベースに追加  
