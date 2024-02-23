@@ -74,8 +74,8 @@ def update_database_from_files(conn, directory_path):
             insert_doc(conn, (filename, tokenized_content))
     print("All files have been inserted into the database.")
 
-def display_associated_files(directory_path, title):
-    """関連するPDFとPNGファイルを表示します。"""
+def display_associated_png_files(directory_path, title):
+    """関連するPNGファイルを表示します。"""
     base_name = os.path.splitext(title)[0]
     png_file = os.path.join(directory_path, f"{base_name}_boxes.png")
     if os.path.exists(png_file):
@@ -83,6 +83,19 @@ def display_associated_files(directory_path, title):
         webbrowser.open(png_file)
     else:
         print(f"PNG File Not Exist: {png_file}")
+
+def display_associated_pdf_files(directory_path, title, opened_files):
+    """関連するPDFファイルを表示します。"""
+    base_name = os.path.splitext(title)[0]
+    png_file = os.path.join(directory_path, f"{base_name}_boxes.png")
+    pdf_file = png_file.rsplit("_page", 1)[0] + ".pdf"
+
+    if os.path.exists(pdf_file) and pdf_file not in opened_files:
+        print(f"PDF File: {pdf_file}")
+        webbrowser.open(pdf_file)
+        opened_files.add(pdf_file)  # ファイルを開いたとして追跡
+    else:
+        print(f"PDF File Not Exist or Already Opened: {pdf_file}")
 
 def display_matched_lines(documents, query):
     """検索にマッチした文書の内容から、クエリにマッチする行とその行番号を表示します。
@@ -140,6 +153,7 @@ def main():
             max_results = 10
         
         while True:
+            opened_files = set()  # 開いたファイルを追跡するセット
             search_query = input("Enter search keyword (or type 'exit' to quit): ")
             if search_query.lower() == 'exit':
                 break
@@ -147,7 +161,10 @@ def main():
             if display_matched_lines(results, search_query):
                 if input("Display associated PNG files? (y/n): ").lower() == 'y':
                     for title, _ in results:
-                        display_associated_files(directory_path, title)
+                        display_associated_png_files(directory_path, title)
+                if input("Display associated PDF files? (y/n): ").lower() == 'y':
+                    for title, _ in results:
+                        display_associated_pdf_files(directory_path, title, opened_files)
     else:
         print("Error! Cannot create the database connection.")
 
