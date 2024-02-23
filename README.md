@@ -20,7 +20,13 @@ https://docs.google.com/spreadsheets/d/1LDCPJHwAqR2aIFU27a9HF81LtlTdhSeLXwfurvXf
 ## PDF一括ダウンロード&OCRデータ
 ### 政治資金収支報告書
 ギガファイル便　ダウンロード期限：2024年5月26日(日)
-https://83.gigafile.nu/0526-gf5a1e40d60e2461c60f80f8e97943073
+https://83.gigafile.nu/0526-gf5a1e40d60e2461c60f80f8e97943073  
+
+### 政治資金収支報告書テキスト検索ツール（すぐに使えるパック）
+ギガファイル便　ダウンロード期限：2024年6月2日(日)  
+https://47.gigafile.nu/0602-f90649ecf25e0c25e90822b8ef682df98
+
+
 
 ## テキストファイル一括検索ツール
 上記のPDF一括ダウンロード&OCRデータには収支報告書PDFをGoogle Vision APIによるOCR(光学的文字認識)により書き起こしたテキストデータと
