@@ -35,12 +35,14 @@ def insert_doc(conn, doc):
 
 # FTS5に依存しない検索関数
 def search_docs(conn, query, max_results):
-    """LIKE検索を使用してデータベースを検索し、結果を返します。"""
+    """複数のキーワードでAND条件を使用してデータベースを検索し、結果を返します。"""
     cur = conn.cursor()
-    # '%'をクエリの両端に追加して部分一致検索を行う
-    like_query = f"%{query}%"
+    keywords = query.split()  # スペースでクエリを分割し、キーワードのリストを作成
+    like_queries = [f"%{keyword}%" for keyword in keywords]  # 各キーワードに対してLIKE検索用の文字列を作成
+    query_placeholders = ' AND '.join(['content LIKE ?' for _ in keywords])  # プレースホルダーを生成
     try:
-        cur.execute("SELECT title, content FROM docs WHERE content LIKE ? LIMIT ?", (like_query, max_results))
+        # 複数のLIKE条件をANDで結合し、すべての条件を満たす行を検索
+        cur.execute(f"SELECT title, content FROM docs WHERE {query_placeholders} LIMIT ?", (*like_queries, max_results))
         return cur.fetchall()
     except sqlite3.OperationalError as e:
         print(f"An error occurred: {e}")
@@ -100,21 +102,27 @@ def display_associated_pdf_files(directory_path, title, opened_files):
 def display_matched_lines(documents, query):
     """検索にマッチした文書の内容から、クエリにマッチする行とその行番号を表示します。
     マッチする行があればTrue、なければFalseを返します。"""
+    keywords = query.split()  # クエリをキーワードに分割
     matched = False  # マッチした行があるかどうかを追跡
+
     for title, content in documents:
+        content_matched = all(keyword in content for keyword in keywords)  # コンテンツがすべてのキーワードを含むかチェック
+        if not content_matched:
+            continue  # すべてのキーワードにマッチしない場合はスキップ
+
         line_number = 0  # 行番号の初期化
         for line in content.split('\n'):
             line_number += 1
-            if query in line:
+            if all(keyword in line for keyword in keywords):  # すべてのキーワードにマッチする行のみをチェック
                 if not matched:  # 最初のマッチでTrueに設定
                     matched = True
                 # ファイル名と行番号を含めてマッチした行を表示
                 print(f"File: {title}, Line: {line_number}")
                 print(f"Matched Line: {line}\n")
+                
     if not matched:
         print("該当する検索結果無し")
     return matched
-
 
 def main():
     parser = argparse.ArgumentParser(description="Search and display text files, PDFs, and PNGs.")
