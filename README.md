@@ -19,7 +19,7 @@ https://docs.google.com/spreadsheets/d/1LDCPJHwAqR2aIFU27a9HF81LtlTdhSeLXwfurvXf
 
 ## PDF一括ダウンロード&OCRデータ
 ### 政治資金収支報告書
-ギガファイル便　ダウンロード期限：2024年5月26日(日)
+ギガファイル便　ダウンロード期限：2024年5月26日(日)  
 https://83.gigafile.nu/0526-gf5a1e40d60e2461c60f80f8e97943073  
 
 ### 政治資金収支報告書テキスト検索ツール（すぐに使えるパック）
