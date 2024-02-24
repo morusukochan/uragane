@@ -1,6 +1,5 @@
-
-  ![裏金発見器の使い方-1](https://github.com/morusukochan/uragane/assets/128382257/8a978292-c08d-43a3-9607-84a2b91e666e)  
-
+  ![裏金発見器の使い方-1](https://github.com/morusukochan/uragane/assets/128382257/0844d53b-fc73-45ab-90a5-c9d80b9142ae)  
+  
   ![裏金発見器の使い方-3](https://github.com/morusukochan/uragane/assets/128382257/3fd97eca-576b-40ac-b5f2-39eafd6032e2)  
 
   すぐに始めたい人はここからダウンロードすればすぐに始められます  
