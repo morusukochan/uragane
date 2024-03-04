@@ -137,10 +137,7 @@ def display_matched_lines(documents, query):
     return matched
 
 def main():
-    print("0")
-
     pfu.load_excel_to_sqlite(update=False)#政治資金収支報告書スプレッドシートを更新するときにTrueで起動する
-    print("1")
     parser = argparse.ArgumentParser(description="Search and display text files, PDFs, and PNGs.")
     parser.add_argument("--update", action="store_true", help="Update the database with new files from the specified directory.")
     
@@ -155,11 +152,10 @@ def main():
         application_path = os.path.dirname(os.path.abspath(__file__))
 
     directory_path = os.path.join(application_path, 'files')
-    print("2")
 
     if conn is not None:
         create_table(conn)
-        
+        """
         if args.update:
             update_database_from_files(conn, directory_path)
             print("Database updated.")
@@ -169,7 +165,7 @@ def main():
                 print("Database updated.")
             else:
                 print("Skipping database update.")
-        
+        """
         # ユーザーに検索結果の上限数を尋ねる
         try:
             max_results = int(input("検索結果の表示上限数を入力してください（デフォルトは10）: "))
