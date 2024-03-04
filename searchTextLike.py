@@ -5,6 +5,7 @@ import webbrowser
 from tqdm import tqdm
 import argparse
 import sys
+import political_funds_utils as pfu
 
 def create_connection(db_file):
     """データベース接続を作成し、接続を返します。"""
@@ -89,15 +90,26 @@ def display_associated_png_files(directory_path, title):
 def display_associated_pdf_files(directory_path, title, opened_files):
     """関連するPDFファイルを表示します。"""
     base_name = os.path.splitext(title)[0]
-    png_file = os.path.join(directory_path, f"{base_name}_boxes.png")
-    pdf_file = png_file.rsplit("_page", 1)[0] + ".pdf"
+    # `_page_x`の部分を取り除く
+    base_name_without_page = base_name.rsplit('_page', 1)[0]
+    pdf_file_name = f"{base_name_without_page}.pdf"
+    pdf_file_path = os.path.join(directory_path, pdf_file_name)
+    # ファイル名内の`_`を`/`に置き換える
+    remote_path_part = pdf_file_name.replace('_', '/')
+    remote_pdf_url = f"https://www.soumu.go.jp/senkyo/seiji_s/seijishikin/contents/{remote_path_part}"
+    # URL内の `/contents/contents/` を `/contents/` に置き換える
+    remote_pdf_url = remote_pdf_url.replace('/contents/contents/', '/contents/')
 
-    if os.path.exists(pdf_file) and pdf_file not in opened_files:
-        print(f"PDF File: {pdf_file}")
-        webbrowser.open(pdf_file)
-        opened_files.add(pdf_file)  # ファイルを開いたとして追跡
+    print(pfu.find_and_concatenate(remote_pdf_url))
+    if os.path.exists(pdf_file_path) and pdf_file_path not in opened_files:
+        print(f"PDF File: {pdf_file_path}")
+        webbrowser.open(pdf_file_path)
+        opened_files.add(pdf_file_path)  # ファイルを開いたとして追跡
     else:
-        print(f"PDF File Not Exist or Already Opened: {pdf_file}")
+        print(f"Opening remote PDF File: {remote_pdf_url}")
+        webbrowser.open(remote_pdf_url)
+        opened_files.add(pdf_file_path)  # ファイルを開いたとして追跡
+
 
 def display_matched_lines(documents, query):
     """検索にマッチした文書の内容から、クエリにマッチする行とその行番号を表示します。
@@ -125,6 +137,10 @@ def display_matched_lines(documents, query):
     return matched
 
 def main():
+    print("0")
+
+    pfu.load_excel_to_sqlite(update=False)#政治資金収支報告書スプレッドシートを更新するときにTrueで起動する
+    print("1")
     parser = argparse.ArgumentParser(description="Search and display text files, PDFs, and PNGs.")
     parser.add_argument("--update", action="store_true", help="Update the database with new files from the specified directory.")
     
@@ -139,6 +155,7 @@ def main():
         application_path = os.path.dirname(os.path.abspath(__file__))
 
     directory_path = os.path.join(application_path, 'files')
+    print("2")
 
     if conn is not None:
         create_table(conn)
